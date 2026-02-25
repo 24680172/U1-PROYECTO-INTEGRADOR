@@ -24,7 +24,8 @@ Identificadores: Al guardar el TextField en la variable txt_nombre, creas una re
 ```Python
 dd_semestre = ft.Dropdown(
     options=[ft.dropdown.Option(str(i)) for i in range(1, 7)]
-)```
+)
+```
 List Comprehension: Aquí aplicas lógica de Python puro para la interfaz. En lugar de escribir 6 líneas de código, generas objetos ft.dropdown.Option dinámicamente. Esto es lo que hace a Flet potente: puedes usar todas las herramientas de Python para construir la UI.
 
 4. El Ciclo de Vida del Evento (enviar_click)
@@ -35,7 +36,8 @@ def enviar_click(e):
     # 1. Captura de datos (Pull Model)
     # 2. Lógica de validación
     # 3. Mutación del estado del control (txt_resultado.value = "...")
-    # 4. Sincronización (page.update())```
+    # 4. Sincronización (page.update())
+```
 El parámetro e: Es un objeto ControlEvent. Contiene información sobre quién disparó el evento (el botón), las coordenadas del clic, etc.
 
 Validación de Cortocircuito: El uso de if/elif asegura que el programa se detenga en el primer error encontrado, mejorando la experiencia del usuario (UX) al no saturarlo con todos los errores a la vez.
@@ -49,4 +51,18 @@ page.add(
         ft.Row([dd_carrera, dd_semestre], spacing=10),
         # ...
     ], spacing=15)
-)```
+)
+```
+Flet utiliza un sistema de Flexbox:
+
+ft.Column: Define un eje principal vertical. El spacing=15 separa los elementos automáticamente sin necesidad de márgenes manuales.
+
+ft.Row: Anidado dentro de la columna, crea un eje horizontal. Es ideal para formularios donde quieres que dos campos compartan una línea.
+
+6. Resumen de Propiedades Avanzadas
+------------------------------------------------------------
+      Propiedad                             Función Técnica
+     "bgcolor=""#000000"""         || Define el fondo en formato Hexadecimal.
+    weight=ft.FontWeight.BOLD      || Accede a las constantes de tipografía del framework.
+            on_click               ||"Es un puntero a la función. No lleva paréntesis () porque no queremos que se ejecute al cargar, sino cuando ocurra el evento."
+------------------------------------------------------------
